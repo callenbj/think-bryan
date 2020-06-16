@@ -1,0 +1,49 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+    console.log("Hello2")
+
+jQuery(function(){
+
+    $("#star").change(myFunc = function(){
+        console.log("Hello")
+
+    })
+
+$("input[type='text']").change(myFunc);
+$(window).on('load', myFunc);
+
+});
+</script>
+<form method=post action="">
+    {% extends "layouts/base.html" %}
+    {% block content %}
+        <table>
+            {% for field in form %}
+                <tr>
+                    <td>{{ field }}</td>
+                    <td>{{ field.label }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br/><br/>
+
+        {% if result != None %}
+            <table id="recentcases" style="width:100%">
+                {% for field in form2 %}
+                    <tr>
+                        <td>{{ field }}</td>
+                        <td>{{ field.label }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+
+        {% endif %}
+        <br/><br/>
+        <p><input type=submit value=Compute></form></p>
+        <br/><br/>
+
+
+
+    {% endblock %}

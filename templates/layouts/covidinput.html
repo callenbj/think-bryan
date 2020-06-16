@@ -1,0 +1,38 @@
+{% extends "layouts/base.html" %}
+{% block title %}{{title}}{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+<div class="row text-center">
+
+    <br/><br/>
+</div>
+
+    <title>Wisconsin Cases</title>
+    </head>
+    <body>
+    <table id="recentcases" style="width:100%">
+        {% if result %}
+            <tr>
+                <th>Date</th>
+                <th>Cases</th>
+                <th>Deaths</th>
+                <th>State</th>
+                <th>County</th>
+            </tr>
+            {% for row in result %}
+                <tr>
+                    <td> {{ row.Date }}</td>
+                    <td> {{ row.Cases }}</td>
+                    <td> {{ row.Deaths }}</td>
+                    <td> {{ row.State }}</td>
+                    <td> {{ row.County }}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+    </table>
+    </body>
+
+    <br/><br/>
+{% endblock %}
