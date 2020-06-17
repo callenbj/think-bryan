@@ -6,9 +6,27 @@
 {% block content %}
     <div class="row text-center">
         <h1>{{ title}}</h1>
-        <p>
-           Math and such
-        </p>
+
     </div>
+
+    <head>
+        <meta charset="UTF-8" />
+        <title>Maths Equations</title>
+        <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+        <script>
+            MathJax.Hub.Config({
+                tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+            });
+        </script>
+    </head>
+    <body>
+    <b><p style="text-align:left">SIR Differential Equations</p></b>
+    <p>$${dS \over dt} = {-\beta SI}$$</p>
+    <p>$${dI \over dt} = {\beta SI - \gamma I}$$</p>
+    <p>$${dR \over dt} = {\gamma I}$$</p>
+
+    <p style="text-align:left">The three primary equations used to calculate the SIR models. S is the population number that are currently susceptible to infection. I is the count of population that are currently infectious (symptoms or no symptoms). R is the population count that are removed from infectiousness and no longer susceptible. So those that have recovered...or not.</p>
+    </body>
+    <br/><br/>
     <br/><br/>
 {% endblock %}

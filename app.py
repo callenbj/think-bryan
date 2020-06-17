@@ -60,7 +60,7 @@ def catpictures():
 
 @app.route('/equations', methods=['GET'])
 def equations():
-    title = 'Coming Soon'
+    title = 'Equations and whatnot'
     return render_template('layouts/equations.html',
                            title=title)
 
