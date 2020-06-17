@@ -1,0 +1,14 @@
+{% extends "layouts/base.html" %}
+{% block title %}{{title}}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <div class="row text-center">
+        <h1>{{ title}}</h1>
+        <p>
+            This is going to be cute.
+        </p>
+    </div>
+    <br/><br/>
+{% endblock %}

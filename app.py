@@ -30,6 +30,8 @@ def index():
                            title=title)
 
 
+
+
 @app.route('/covid', methods=['GET', 'POST'])
 def vib2():
     #form = InputForm(request.form)
@@ -49,8 +51,18 @@ def vib2():
     return render_template(template_name + '.html',
                            form=form, result=result)
 
+@app.route('/catpictures', methods=['GET'])
+def catpictures():
+    title = 'Coming Soon'
+    return render_template('layouts/catpictures.html',
+                           title=title)
 
 
+@app.route('/equations', methods=['GET'])
+def equations():
+    title = 'Coming Soon'
+    return render_template('layouts/equations.html',
+                           title=title)
 
 if __name__ == '__main__':
     #app.run(host='0.0.0.0', port=5000, debug=True)

@@ -1,3 +1,5 @@
+import pylab
+
 import pylab as pl
 #import scipy.integrate as spi
 import math
@@ -7,7 +9,8 @@ import numpy as np
 import time
 from datetime import datetime
 from numpy import exp, cos, linspace
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
 import os, time, glob
 my_path = os.path.abspath(__file__)
 
@@ -67,6 +70,7 @@ def sir_method(population, recovered, days, days_to_recovery, rate_of_reproducti
     # This block is for graphing and will most likely not be in the final product
 
     RES = None
+    pl.close('all')
     pl.clf()
 
     RES = np.array(AA)
