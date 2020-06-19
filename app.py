@@ -51,6 +51,18 @@ def vib2():
     return render_template(template_name + '.html',
                            form=form, result=result)
 
+@app.route('/logisticregression', methods=['GET'])
+def logisticregression():
+    title = 'Logistic Regression'
+    return render_template('layouts/logisticregression.html',
+                           title=title)
+
+@app.route('/datagenerator', methods=['GET'])
+def datagenerator():
+    title = 'Randomized Data Generator'
+    return render_template('layouts/datagenerator.html',
+                           title=title)
+
 @app.route('/catpictures', methods=['GET'])
 def catpictures():
     title = 'Coming Soon'
