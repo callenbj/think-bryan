@@ -25,7 +25,7 @@ app._static_folder = os.path.abspath("static/")
 
 @app.route('/', methods=['GET'])
 def index():
-    title = 'Home Screen'
+    title = 'About Me'
     return render_template('layouts/index.html',
                            title=title)
 
