@@ -1,24 +1,26 @@
-{% extends "layouts/base.html" %}
-{% block title %}{{title}}{% endblock %}
-{% block head %}
-    {{ super() }}
-{% endblock %}
-{% block content %}
-    <div class="row text-left">
-        <h1>{{ title}}</h1>
-        <p>
-            An in-progress randomized data generator, for the loose purpose of producing statistically
-            significant logistic regression test data. Much of the validation will be on the honor system.
-        </p>
-        <hr>
-        <p> Input percentage of positive records and total count</p>
-        <hr>
-        <p>Positive Record values</p>
-        <p>percentage for each age bracket and gender</p>
-        <hr>
-        <p>Positive Record values</p>
-        <p>percentage for each age bracket and gender</p>
 
-    </div>
-    <br/><br/>
-{% endblock %}
+<form method=post action="">
+    {% extends "layouts/base.html" %}
+    {% block content %}
+        <table>
+            {% for field in form %}
+                <tr>
+                    <td>{{ field.label }}</td>
+                    <td></td>
+                    <td>{{ field }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br/><br/>
+        <p><input type=submit value=Compute></form></p>
+        <p>
+            {% if result != None %}
+                <img src="{{ result }}" class="img-fluid rounded" alt="Generic placeholder thumbnail" width="600" height="450"/>
+                <p>
+                    <a href="{{ url_for('.download_file2') }}">Download</a>
+                    <a href="{{ result }}">Download2</a>
+                </p>
+            {% endif %}
+        </p>
+        <br/><br/>
+    {% endblock %}

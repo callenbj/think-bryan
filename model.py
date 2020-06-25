@@ -1,4 +1,4 @@
-from wtforms import Form, FloatField, validators, StringField, ValidationError
+from wtforms import Form, FloatField, validators, StringField, ValidationError, IntegerField
 from wtforms.validators import NumberRange
 from math import pi
 
@@ -100,3 +100,22 @@ class ContactInputForm2(Form):
     PP = FloatField(
         label='Percentage of Isolators', default=.5,
         validators=[validators.InputRequired()])
+
+
+class DataGenForm(Form):
+    A = IntegerField(
+        label='Total Records', default=10,
+        validators=[validators.InputRequired(), validators.NumberRange(min=5, max=1000, message='Must be between 5 and 1000')])
+    MA = IntegerField(
+        label='Maximum Age', default=75,
+        validators=[validators.InputRequired(), validators.NumberRange(min=20, max=100, message='Must be between 5 and 1000')])
+    P = FloatField(
+        label='Percentage of Positive Records', default=.5,
+        validators=[validators.InputRequired()])
+    PF = FloatField(
+        label='Percentage of Positive Records that are Female', default=.5,
+        validators=[validators.InputRequired()])
+    NF = FloatField(
+        label='Percentage of Negative Records that are Female', default=.5,
+        validators=[validators.InputRequired()])
+

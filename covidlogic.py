@@ -3,6 +3,7 @@ import pylab
 import pylab as pl
 #import scipy.integrate as spi
 import math
+import names
 import csv
 import random
 import numpy as np
@@ -13,6 +14,8 @@ import matplotlib.pyplot as plt
 
 import os, time, glob
 my_path = os.path.abspath(__file__)
+
+
 
 from numpy import zeros, linspace
 import matplotlib.pyplot as plt
@@ -199,3 +202,105 @@ def sir_method_contact(population, recovered, days, days_to_recovery, rate_of_re
     plotfile = os.path.join('static', str(time.time()) + '.png')
     pl.savefig(plotfile)
     return plotfile
+
+
+def data_generator(count, maxage, posratio, posfemale, negfemale):
+
+    def random_pick(some_list, probabilities):
+        x = random.uniform(0, 1)
+        cumulative_probability = 0.0
+        for item, item_probability in zip(some_list, probabilities):
+            cumulative_probability += item_probability
+            if x < cumulative_probability: break
+        return item
+
+    mydata2 = []
+
+
+    poscount = int(count*posratio)
+
+    negcount = count - poscount
+
+    # field names
+    headers = [ 'FirstName', 'LastName', 'Gender', 'Age', 'Outcome']
+
+    gender_list = ['Female', 'Male']
+
+    posmale = 1 - posfemale
+
+    negmale = 1 - negfemale
+
+    posgender = [posfemale, posmale]
+
+    neggender = [negfemale, negmale]
+
+    for x in range(0, (10*poscount)//10):
+        #disvar = str(random.randint(2, 8)) + ' km'
+
+        last_name = names.get_last_name()
+
+        gender = random_pick(gender_list, posgender)
+
+        if gender == 'Female':
+            first_name = names.get_first_name(gender='female')
+        else:
+            first_name = names.get_first_name(gender='male')
+
+
+        mydata2.append([first_name, last_name, gender,  random.randint(18, maxage), 'Positive'])
+
+
+
+    for x in range(0, negcount):
+        #disvar = str(random.randint(2, 8)) + ' km'
+
+        last_name = names.get_last_name()
+
+        gender = random_pick(gender_list, neggender)
+
+        if gender == 'Female':
+            first_name = names.get_first_name(gender='female')
+        else:
+            first_name = names.get_first_name(gender='male')
+
+
+        mydata2.append([first_name, last_name, gender,  random.randint(18, maxage), 'Negative'])
+
+
+
+
+    if not os.path.isdir('images'):
+        os.mkdir('images')
+    else:
+        # Remove old plot files
+        for filename in glob.glob(os.path.join('images', '*.csv')):
+            os.remove(filename)
+    # Use time since Jan 1, 1970 in filename in order make
+    # a unique filename that the browser has not chached
+    rdata = os.path.join('images', 'randomdata_' + str(time.time()) + '.csv')
+
+    random.shuffle(mydata2)
+    mydata2.insert(0, headers)
+
+    # writing to csv file
+    with open(rdata, 'w', newline='') as csvfile:
+        # creating a csv writer object
+
+        csvwriter = csv.writer(csvfile)
+        csvwriter.writerows(mydata2)
+
+    return rdata
+
+
+
+
+
+
+
+
+
+
+
+
+
+
