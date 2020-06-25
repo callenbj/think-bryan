@@ -86,12 +86,33 @@ def datagenerator():
 def catpictures():
     title = 'Cat picture of the day'
 
-    plotfile = os.path.join('images', 'ucat' + '.png')
 
-    result = os.path.join('images', 'ucat' + '.png')
+
+    result = os.path.join('static', 'uhuracat' + '.jpg')
 
     #template_name = 'layouts/catpictures.html'
     template_name = 'view4.html'
+    return render_template(template_name,
+                           title=title, result=result)
+
+
+
+@app.route('/personalinfo', methods=['GET', 'POST'])
+def personalinfo():
+    title = 'About Me'
+
+    if request.method == 'POST':
+
+        #result = sir_method(form.A.data, form.b.data, form.w.data, form.T.data, form.R_0.data, form.D.data, form.C.data)
+        result = os.path.join('static', 'myresume' + '.pdf')
+        tempvar = result
+        return send_file(result, as_attachment=True, cache_timeout=0)
+    else:
+        result = None
+
+
+    #template_name = 'layouts/catpictures.html'
+    template_name = 'view5.html'
     return render_template(template_name,
                            title=title, result=result)
 
@@ -123,6 +144,19 @@ def download_file2():
     #path = "images/covid_formulas.png"
     #path = data_generator(5)
     path = tempvar
+    #path = "sample.txt"
+    return send_file(path, as_attachment=True, cache_timeout=0)
+
+
+@app.route('/download3')
+def download_file3():
+    #path = "html2pdf.pdf"
+    #path = "info.xlsx"
+    #path = "images/covid_formulas.png"
+    #path = data_generator(5)
+
+    tempvar4 = os.path.join('static', 'myresume' + '.pdf')
+    path = tempvar4
     #path = "sample.txt"
     return send_file(path, as_attachment=True, cache_timeout=0)
 

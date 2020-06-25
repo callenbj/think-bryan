@@ -1,0 +1,32 @@
+{% extends "layouts/base.html" %}
+{% block title %}{{title}}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <div class="row text-center">
+        <h1>{{ title}}</h1>
+
+        <br/><br/>
+
+        <a href="{{ url_for('.download_file3') }}">My Resume</a>
+
+
+
+    </div>
+
+    <div class="row text-left">
+    <body>
+
+
+    <b><p>Contact</p></b>
+    <p>Email: bryan.j.callen@gmail.com  </p>
+    <p>Linkedin: https://www.linkedin.com/in/bryan-callen-ms-29125740/</p>
+    <b><p>Resume</p></b>
+    <a href="{{ url_for('.download_file3') }}">My Resume</a>
+
+    </body>
+    </div>
+
+    <br/><br/>
+{% endblock %}
