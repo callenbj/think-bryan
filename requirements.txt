@@ -31,7 +31,7 @@ jupyter-core==4.6.3
 jupyterlab==2.1.4
 jupyterlab-server==1.1.5
 kiwisolver==1.2.0
-lxml==4.5.1
+lxml==4.9.1
 MarkupSafe==1.1.1
 marlo==0.0.1.dev23
 matplotlib==3.2.1
